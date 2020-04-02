@@ -7,15 +7,15 @@
   "author": "Tim van Dam <timvandamcs@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint .",
-    "doc": "jsdoc src -r README.md -d doc",
-    "build": "ezrpc build"
+    "lint": "./node_modules/.bin/eslint .",
+    "doc": "./node_modules/.bin/jsdoc src -r README.md -d doc",
+    "build": "./node_modules/.bin/ezrpc build"
   },
   "dependencies": {
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "ezrpc": "^1.4.5",
+    "ezrpc": "^1.4.6",
     "jsdoc": "^3.6.3"
   },
   "devDependencies": {

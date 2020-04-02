@@ -51,15 +51,11 @@ class SteamInventoryLoader {
    * @returns {Promise<SteamInventoryResponse>}
    */
   getItems (startAssetId, count = 5000) {
-    const qs = querystring.stringify({ l: this.language, startAssetId, count })
+    const qs = querystring.stringify({ l: this.language, start_assetid: startAssetId, count })
     return get(`https://steamcommunity.com/inventory/${this.steamId}/${this.appId}/${this.contextId}?${qs}`)
-      .then(response => {
-        console.log(response)
-        if (response.status !== 200) return Promise.reject(new Error('Non-200 status code'))
-        const { data } = response
+      .then(data => {
         if (!data.success) return Promise.reject(new Error('No success'))
         if (!data.assets) return Promise.reject(new Error('Inventory is private/empty'))
-        console.log(data)
         return data
       })
   }
@@ -76,7 +72,6 @@ class SteamInventoryLoader {
       try {
         let assets, descriptions
         ({ assets, descriptions, more_items: moreItems, last_assetid: lastAssetId } = await this.getItems(lastAssetId, 5000))
-        console.log(`got ${assets.length} items`)
         errors = 0
         this.assets.push(...assets)
         descriptions.forEach(description => this.descriptions.set(`${description.classid}-${description.instanceid}`, description))
