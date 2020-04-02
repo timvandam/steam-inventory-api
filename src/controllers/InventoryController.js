@@ -11,7 +11,7 @@ function getInventory (req, res, next) {
   const inventoryLoader = new SteamInventoryLoader(steamId, appId, contextId)
   inventoryLoader.getInventory()
     .then(items => res.status(200).json({ items }))
-    .catch(error => res.status(500).json({ error }))
+    .catch(error => res.status(500).json({ error: error.message }))
 }
 
 module.exports = {
