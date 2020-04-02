@@ -5,7 +5,7 @@ Set up is easy
 
 ```bash
 $ yarn/npm install
-$ yarn/npm run build
+$ yarn/npm run build -e
 ```
 And you're done.
 
