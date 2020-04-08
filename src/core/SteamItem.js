@@ -59,7 +59,7 @@ class SteamItem {
     this.amount = amount
 
     const { currency, icon_url: iconUrl, tradable, name, type, market_name: marketName, market_hash_name: marketHashName, commodity, market_tradable_restriction: marketTradableRestriction, marketable } = description
-    this.currency = currency
+    this.currency = !!currency
     this.iconUrl = iconUrl
     this.tradable = !!tradable
     this.name = name
